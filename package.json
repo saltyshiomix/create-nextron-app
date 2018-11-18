@@ -5,6 +5,10 @@
   "repository": "git@github.com:saltyshiomix/create-nextron-app.git",
   "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
   "license": "MIT",
+  "files": [
+    "index.js",
+    "spinner.js"
+  ],
   "bin": {
     "create-nextron-app": "./index.js"
   },
