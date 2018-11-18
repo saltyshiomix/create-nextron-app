@@ -1,6 +1,6 @@
 {
   "name": "create-nextron-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Create Nextron (Electron + Next.js) apps in one command",
   "repository": "git@github.com:saltyshiomix/create-nextron-app.git",
   "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
