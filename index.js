@@ -65,7 +65,7 @@ async function createNextronApp() {
 
 async function validatesExistence(example) {
   const Github = require('@octokit/rest');
-  await new Github().repos.getContent({
+  await new Github().repos.getContents({
     owner: 'saltyshiomix',
     repo: 'nextron',
     path: `examples/${example}/package.json`,
