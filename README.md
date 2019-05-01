@@ -42,4 +42,4 @@ $ yarn create nextron-app my-app --example with-typescript-material-ui
 
 ## Related
 
-[Nextron - ⚡ Electron + Next.js ⚡](https://github.com/saltyshiomix/nextron)
+[Nextron](https://github.com/saltyshiomix/nextron) - ⚡ Electron + Next.js ⚡
