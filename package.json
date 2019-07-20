@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@octokit/rest": "^16.28.5",
-    "arg": "^4.1.0",
+    "arg": "^4.1.1",
     "chalk": "^2.4.2",
     "got": "^9.6.0",
     "make-dir": "^3.0.0",
