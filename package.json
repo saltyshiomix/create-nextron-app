@@ -32,7 +32,7 @@
     "dev": "rimraf workspace && node dev.js"
   },
   "dependencies": {
-    "@octokit/rest": "^16.28.5",
+    "@octokit/rest": "^16.34.1",
     "arg": "^4.1.1",
     "chalk": "^2.4.2",
     "got": "^9.6.0",
