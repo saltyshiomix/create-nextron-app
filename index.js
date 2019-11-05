@@ -112,6 +112,8 @@ async function downloadAndExtract(name, example, spinner) {
       ]).then(async () => {
         const cmd = (await pm() === 'yarn') ? 'yarn && yarn dev' : 'npm install && npm run dev';
         spinner.clear(`Run \`${cmd}\` inside of "${name}" to start the app`);
+      }).catch(() => {
+        spinner.fail('Unknown error occurred.');
       });
     });
 }
