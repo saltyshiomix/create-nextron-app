@@ -4,6 +4,8 @@ const { resolve } = require('path');
 const arg = require('arg');
 const chalk = require('chalk');
 
+const cwd = process.cwd();
+
 const args = arg({
   '--help': Boolean,
   '--version': Boolean,
@@ -52,7 +54,7 @@ async function createNextronApp() {
 
   try {
     spinner.create('Downloading and extracting...');
-    const name = resolve(process.cwd(), args._[0]);
+    const name = resolve(cwd, args._[0]);
     await require('make-dir')(name);
     await extract(name, example);
 
@@ -102,7 +104,6 @@ async function pm() {
   const { exec: defaultExec } = require('child_process');
 
   let pm = 'yarn';
-  const cwd = process.cwd();
   const exec = promisify(defaultExec);
   try {
     await exec(`${pm} -v`, { cwd });
