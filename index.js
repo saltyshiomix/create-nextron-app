@@ -57,10 +57,7 @@ async function createNextronApp() {
     spinner.create('Downloading and extracting...');
     const name = path.join(cwd, args._[0]);
     await require('make-dir')(name);
-    await extract(name, example);
-
-    const cmd = (await pm() === 'yarn') ? 'yarn && yarn dev' : 'npm install && npm run dev';
-    spinner.clear(`Run \`${cmd}\` inside of "${name}" to start the app`);
+    await extract(name, example, spinner);
   } catch (error) {
     spinner.fail(error);
   }
@@ -75,7 +72,7 @@ async function validatesExistence(example) {
   });
 }
 
-async function extract(name, example) {
+async function extract(name, example, spinner) {
   const masterUrl = 'https://codeload.github.com/saltyshiomix/nextron/tar.gz/master';
   const got = require('got');
   const { t, x } = require('tar');
@@ -90,20 +87,32 @@ async function extract(name, example) {
       return false;
     }}))
     .on('finish', async () => {
-      got
-        .stream(masterUrl)
-        .pipe(x({ cwd: name, strip: 3 }, ['nextron-master/examples/_template/gitignore.txt']))
-        .on('finish', () => {
-          fs.renameSync(path.join(name, 'gitignore.txt'), path.join(name, '.gitignore'));
-        });
-
-      got
-        .stream(masterUrl)
-        .pipe(x({ cwd: name, strip: 4 }, [`nextron-master/examples/_template/${ext}`]));
-
-      got
-        .stream(masterUrl)
-        .pipe(x({ cwd: name, strip: 3 }, [`nextron-master/examples/${example}`]));
+      Promise.all([
+        new Promise(resolve => {
+          got
+            .stream(masterUrl)
+            .pipe(x({ cwd: name, strip: 3 }, ['nextron-master/examples/_template/gitignore.txt']))
+            .on('finish', () => {
+              fs.renameSync(path.join(name, 'gitignore.txt'), path.join(name, '.gitignore'));
+              resolve();
+            });
+        }),
+        new Promise(resolve => {
+          got
+            .stream(masterUrl)
+            .pipe(x({ cwd: name, strip: 4 }, [`nextron-master/examples/_template/${ext}`]))
+            .on('finish', () => resolve());
+        }),
+        new Promise(resolve => {
+          got
+            .stream(masterUrl)
+            .pipe(x({ cwd: name, strip: 3 }, [`nextron-master/examples/${example}`]))
+            .on('finish', () => resolve());
+        }),
+      ]).then(async () => {
+        const cmd = (await pm() === 'yarn') ? 'yarn && yarn dev' : 'npm install && npm run dev';
+        spinner.clear(`Run \`${cmd}\` inside of "${name}" to start the app`);
+      });
     });
 }
 
