@@ -131,11 +131,11 @@ async function pm() {
     try {
       await exec(`${pm} -v`, { cwd });
     } catch (_) {
-      pm = null;
+      pm = undefined;
     }
   }
 
-  if (pm === null) {
+  if (pm === undefined) {
     console.log(chalk.red('No available package manager! (`npm` or `yarn` is required)'));
     process.exit(1);
   }
