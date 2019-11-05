@@ -90,18 +90,18 @@ async function extract(name, example) {
       return false;
     }}))
     .on('finish', async () => {
-      await got
+      got
         .stream(masterUrl)
         .pipe(x({ cwd: name, strip: 3 }, ['nextron-master/examples/_template/gitignore.txt']))
         .on('finish', () => {
           fs.renameSync(path.join(name, 'gitignore.txt'), path.join(name, '.gitignore'));
         });
 
-      await got
+      got
         .stream(masterUrl)
         .pipe(x({ cwd: name, strip: 4 }, [`nextron-master/examples/_template/${ext}`]));
 
-      await got
+      got
         .stream(masterUrl)
         .pipe(x({ cwd: name, strip: 3 }, [`nextron-master/examples/${example}`]));
     });
