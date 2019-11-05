@@ -116,7 +116,7 @@ async function pm() {
   }
 
   if (pm === null) {
-    console.log(chalk.red('No available package manager! (`yarn` or `npm` is needed)'));
+    console.log(chalk.red('No available package manager! (`npm` or `yarn` is required)'));
     process.exit(1);
   }
 
