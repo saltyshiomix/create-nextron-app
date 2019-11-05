@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { resolve } = require('path');
+const path = require('path');
 const arg = require('arg');
 const chalk = require('chalk');
 
@@ -15,7 +15,7 @@ const args = arg({
 });
 
 if (args['--version']) {
-  const pkg = require(resolve(__dirname, './package.json'));
+  const pkg = require(path.join(__dirname, 'package.json'));
   console.log(`create-nextron-app v${pkg.version}`);
   process.exit(0);
 }
@@ -54,7 +54,7 @@ async function createNextronApp() {
 
   try {
     spinner.create('Downloading and extracting...');
-    const name = resolve(cwd, args._[0]);
+    const name = path.join(cwd, args._[0]);
     await require('make-dir')(name);
     await extract(name, example);
 
