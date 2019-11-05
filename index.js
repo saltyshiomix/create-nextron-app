@@ -48,7 +48,7 @@ async function createNextronApp() {
 
   try {
     spinner.create('Validating existence...');
-    await validatesExistence(example);
+    await validateExistence(example);
   } catch (error) {
     spinner.fail(`Not found: ${example}`);
   }
@@ -57,13 +57,13 @@ async function createNextronApp() {
     spinner.create('Downloading and extracting...');
     const name = path.join(cwd, args._[0]);
     await require('make-dir')(name);
-    await extract(name, example, spinner);
+    await downloadAndExtract(name, example, spinner);
   } catch (error) {
     spinner.fail(error);
   }
 }
 
-async function validatesExistence(example) {
+async function validateExistence(example) {
   const Github = require('@octokit/rest');
   await new Github().repos.getContents({
     owner: 'saltyshiomix',
@@ -72,7 +72,7 @@ async function validatesExistence(example) {
   });
 }
 
-async function extract(name, example, spinner) {
+async function downloadAndExtract(name, example, spinner) {
   const masterUrl = 'https://codeload.github.com/saltyshiomix/nextron/tar.gz/master';
   const got = require('got');
   const { t, x } = require('tar');
