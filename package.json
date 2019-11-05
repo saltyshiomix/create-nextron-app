@@ -26,7 +26,7 @@
     "spinner.js"
   ],
   "bin": {
-    "create-nextron-app": "./index.js"
+    "create-nextron-app": "index.js"
   },
   "scripts": {
     "dev": "rimraf workspace && node dev.js"
