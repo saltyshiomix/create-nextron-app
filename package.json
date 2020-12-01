@@ -1,9 +1,9 @@
 {
   "name": "create-nextron-app",
   "version": "3.1.0",
-  "description": "Create Nextron (Electron + NEXT.js) apps in one command",
+  "description": "Create nextron (NEXT.js + Electron) apps in one command",
   "repository": "git@github.com:saltyshiomix/create-nextron-app.git",
-  "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
+  "author": "Shiono Yoshihide <shiono.yoshihide@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/saltyshiomix/create-nextron-app",
   "keywords": [
