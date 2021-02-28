@@ -35,7 +35,7 @@
     "got": "11.8.2",
     "make-dir": "3.1.0",
     "ora": "5.3.0",
-    "tar": "6.0.5"
+    "tar": "6.1.0"
   },
   "devDependencies": {
     "execa": "^4.1.0",
