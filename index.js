@@ -109,7 +109,7 @@ async function downloadAndExtract(name, example, spinner) {
         await new Promise(resolve => {
           got
             .stream(masterUrl)
-            .pipe(x({ cwd: name, strip: 3 }, [`nextron-master/examples/${example}`]))
+            .pipe(x({ cwd: name, strip: 4 }, [`nextron-master/examples/${example}`]))
             .on('finish', () => resolve());
         });
 
