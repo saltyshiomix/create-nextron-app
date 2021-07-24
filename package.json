@@ -38,7 +38,7 @@
     "tar": "6.1.1"
   },
   "devDependencies": {
-    "execa": "^5.0.0",
+    "execa": "^5.1.1",
     "rimraf": "^3.0.2"
   }
 }
