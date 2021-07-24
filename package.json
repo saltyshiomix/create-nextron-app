@@ -34,7 +34,7 @@
     "chalk": "4.1.1",
     "got": "11.8.2",
     "make-dir": "3.1.0",
-    "ora": "5.4.0",
+    "ora": "5.4.1",
     "tar": "6.1.0"
   },
   "devDependencies": {
