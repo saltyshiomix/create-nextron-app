@@ -73,13 +73,13 @@ async function validateExistence(example) {
 }
 
 async function downloadAndExtract(name, example, spinner) {
-  const masterUrl = 'https://codeload.github.com/saltyshiomix/nextron/tar.gz/master';
+  const mainUrl = 'https://codeload.github.com/saltyshiomix/nextron/tar.gz/main';
   const got = require('got');
   const { t, x } = require('tar');
 
   let ext = 'js';
   await got
-    .stream(masterUrl)
+    .stream(mainUrl)
     .pipe(t({ cwd: name, strip: 3, filter: (path) => {
       if (path.endsWith(`${example}/tsconfig.json`)) {
         ext = 'ts';
@@ -91,8 +91,8 @@ async function downloadAndExtract(name, example, spinner) {
         await Promise.all([
           new Promise(resolve => {
             got
-              .stream(masterUrl)
-              .pipe(x({ cwd: name, strip: 3 }, ['nextron-master/examples/_template/gitignore.txt']))
+              .stream(mainUrl)
+              .pipe(x({ cwd: name, strip: 3 }, ['nextron-main/examples/_template/gitignore.txt']))
               .on('finish', () => {
                 fs.renameSync(path.join(name, 'gitignore.txt'), path.join(name, '.gitignore'));
                 resolve();
@@ -100,16 +100,16 @@ async function downloadAndExtract(name, example, spinner) {
           }),
           new Promise(resolve => {
             got
-              .stream(masterUrl)
-              .pipe(x({ cwd: name, strip: 4 }, [`nextron-master/examples/_template/${ext}`]))
+              .stream(mainUrl)
+              .pipe(x({ cwd: name, strip: 4 }, [`nextron-main/examples/_template/${ext}`]))
               .on('finish', () => resolve());
           }),
         ]);
 
         await new Promise(resolve => {
           got
-            .stream(masterUrl)
-            .pipe(x({ cwd: name, strip: 3 }, [`nextron-master/examples/${example}`]))
+            .stream(mainUrl)
+            .pipe(x({ cwd: name, strip: 3 }, [`nextron-main/examples/${example}`]))
             .on('finish', () => resolve());
         });
 
