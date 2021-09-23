@@ -29,7 +29,7 @@
     "dev": "rimraf workspace && node dev.js"
   },
   "dependencies": {
-    "@octokit/rest": "18.7.1",
+    "@octokit/rest": "18.11.0",
     "arg": "5.0.0",
     "chalk": "4.1.1",
     "got": "11.8.2",
