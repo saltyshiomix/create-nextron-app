@@ -13,6 +13,7 @@ const args = arg({
   '--example': String,
   '-h': '--help',
   '-v': '--version',
+  '-e': '--example',
 });
 
 if (args['--version']) {
