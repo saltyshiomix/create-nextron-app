@@ -12,7 +12,7 @@
   </a>
 </p>
 
-Create Electron + Next.js apps in one command ⚡
+Create nextron (NEXT.js + Electron) apps in one command ⚡
 
 ## Usage
 
@@ -38,7 +38,7 @@ $ yarn create nextron-app my-app --example with-typescript-material-ui
 
 ## Examples
 
-<https://github.com/saltyshiomix/nextron/tree/master/examples>
+<https://github.com/saltyshiomix/nextron/tree/main/examples>
 
 ## Related
 
