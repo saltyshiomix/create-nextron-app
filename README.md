@@ -26,7 +26,7 @@ $ npx create-nextron-app my-app
 $ npx create-nextron-app my-app --example with-typescript-material-ui
 
 # specific release branch of nextron
-$ npx create-nextron-app my-app --example with-typescript-emotion --branch release/v5
+$ npx create-nextron-app my-app --example with-typescript-emotion --branch release/v8
 ```
 
 ### With Yarn
@@ -39,7 +39,7 @@ $ yarn create nextron-app my-app
 $ yarn create nextron-app my-app --example with-typescript-material-ui
 
 # specific release branch of nextron
-$ yarn create nextron-app my-app --example with-typescript-emotion --branch release/v5
+$ yarn create nextron-app my-app --example with-typescript-emotion --branch release/v8
 ```
 
 ## Examples
