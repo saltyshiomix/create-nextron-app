@@ -65,6 +65,7 @@ async function createNextronApp() {
     await require('make-dir')(dirname);
     await downloadAndExtract(branch, example, dirname, spinner);
   } catch (error) {
+    console.error(error);
     spinner.fail(error);
   }
 }
