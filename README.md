@@ -12,7 +12,7 @@
   </a>
 </p>
 
-Create nextron (NEXT.js + Electron) apps in one command ⚡
+Create nextron (Next.js + Electron) apps in one command ⚡
 
 ## Usage
 
@@ -24,6 +24,9 @@ $ npx create-nextron-app my-app
 
 # `with-typescript-material-ui` example
 $ npx create-nextron-app my-app --example with-typescript-material-ui
+
+# specific release branch of nextron
+$ npx create-nextron-app my-app --example with-typescript-emotion --branch release/v5
 ```
 
 ### With Yarn
@@ -34,6 +37,9 @@ $ yarn create nextron-app my-app
 
 # `with-typescript-material-ui` example
 $ yarn create nextron-app my-app --example with-typescript-material-ui
+
+# specific release branch of nextron
+$ yarn create nextron-app my-app --example with-typescript-emotion --branch release/v5
 ```
 
 ## Examples
