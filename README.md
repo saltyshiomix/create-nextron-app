@@ -22,11 +22,11 @@ Create nextron (Next.js + Electron) apps in one command ⚡
 # `with-javascript` example
 $ npx create-nextron-app my-app
 
-# `with-typescript-material-ui` example
-$ npx create-nextron-app my-app --example with-typescript-material-ui
+# `with-material-ui` example
+$ npx create-nextron-app my-app --example with-material-ui
 
 # specific release branch of nextron
-$ npx create-nextron-app my-app --example with-typescript-emotion --branch release/v8
+$ npx create-nextron-app my-app --example with-emotion --branch release/v8
 ```
 
 ### With Yarn
@@ -35,11 +35,11 @@ $ npx create-nextron-app my-app --example with-typescript-emotion --branch relea
 # `with-javascript` example
 $ yarn create nextron-app my-app
 
-# `with-typescript-material-ui` example
-$ yarn create nextron-app my-app --example with-typescript-material-ui
+# `with-material-ui` example
+$ yarn create nextron-app my-app --example with-material-ui
 
 # specific release branch of nextron
-$ yarn create nextron-app my-app --example with-typescript-emotion --branch release/v8
+$ yarn create nextron-app my-app --example with-emotion --branch release/v8
 ```
 
 ## Examples
