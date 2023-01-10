@@ -48,7 +48,7 @@ createNextronApp();
 
 async function createNextronApp() {
   const spinner = require('./spinner');
-  const example = args['--example'] || 'with-javascript';
+  const example = args['--example'] || 'basic-javascript';
   const branch = args['--branch'] || 'main';
 
   try {
