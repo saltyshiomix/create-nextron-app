@@ -45,7 +45,7 @@ createNextronApp();
 
 async function createNextronApp() {
   const spinner = require('./spinner');
-  const example = args['--example'] || 'basic-javascript';
+  const example = args['--example'] || 'basic-lang-javascript';
 
   try {
     spinner.create('Validating existence...');
