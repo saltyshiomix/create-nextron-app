@@ -19,27 +19,21 @@ Create nextron (Next.js + Electron) apps in one command ⚡
 ### With npm
 
 ```bash
-# `basic-javascript` example
+# `basic-lang-javascript` example
 $ npx create-nextron-app my-app
 
-# `with-material-ui` example
-$ npx create-nextron-app my-app --example with-material-ui
-
-# specific release branch of nextron
-$ npx create-nextron-app my-app --example with-emotion --branch release/v8
+# `with-tailwindcss` example
+$ npx create-nextron-app my-app --example with-tailwindcss
 ```
 
 ### With yarn
 
 ```bash
-# `basic-javascript` example
+# `basic-lang-javascript` example
 $ yarn create nextron-app my-app
 
-# `with-material-ui` example
-$ yarn create nextron-app my-app --example with-material-ui
-
-# specific release branch of nextron
-$ yarn create nextron-app my-app --example with-emotion --branch release/v8
+# `with-tailwindcss` example
+$ yarn create nextron-app my-app --example with-tailwindcss
 ```
 
 ## Examples

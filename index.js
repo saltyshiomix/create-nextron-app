@@ -11,11 +11,9 @@ const args = arg({
   '--help': Boolean,
   '--version': Boolean,
   '--example': String,
-  '--branch': String,
   '-h': '--help',
   '-v': '--version',
   '-e': '--example',
-  '-b': '--branch',
 });
 
 if (args['--version']) {
@@ -32,14 +30,13 @@ if (args['--help'] || (!args._[0])) {
 
       {bold $} {cyan create-nextron-app} --help
       {bold $} {cyan create-nextron-app} {underline my-app}
-      {bold $} {cyan create-nextron-app} {underline my-app} [--example {underline example_folder_name}] [--branch {underline branch_name}]
+      {bold $} {cyan create-nextron-app} {underline my-app} [--example {underline example_folder_name}]
 
     {bold OPTIONS}
 
       --help,     -h                      shows this help message
       --version,  -v                      displays the current version of create-nextron-app
       --example,  -e {underline example_folder_name}  sets the example as a template
-      --branch,   -b {underline branch_name}          sets the branch name
   `);
   process.exit(0);
 }
@@ -49,11 +46,10 @@ createNextronApp();
 async function createNextronApp() {
   const spinner = require('./spinner');
   const example = args['--example'] || 'basic-javascript';
-  const branch = args['--branch'] || 'main';
 
   try {
     spinner.create('Validating existence...');
-    await validateExistence(branch, example);
+    await validateExistence(example);
   } catch (error) {
     console.error(error);
     spinner.fail(`Not found: ${example}`);
@@ -63,26 +59,25 @@ async function createNextronApp() {
     spinner.create('Downloading and extracting...');
     const dirname = path.join(cwd, args._[0]);
     await require('make-dir')(dirname);
-    await downloadAndExtract(branch, example, dirname, spinner);
+    await downloadAndExtract(example, dirname, spinner);
   } catch (error) {
     console.error(error);
     spinner.fail(error);
   }
 }
 
-async function validateExistence(branch, example) {
+async function validateExistence(example) {
   const { Octokit } = require('@octokit/rest');
   await new Octokit().repos.getContent({
     owner: 'saltyshiomix',
     repo: 'nextron',
-    ref: branch,
+    ref: 'main',
     path: `examples/${example}/package.json`,
   });
 }
 
-async function downloadAndExtract(branch, example, dirname, spinner) {
-  const hyphenatedBranchName = branch.replace(/\//g, '-');
-  const mainUrl = `https://codeload.github.com/saltyshiomix/nextron/tar.gz/${branch}`;
+async function downloadAndExtract(example, dirname, spinner) {
+  const mainUrl = 'https://codeload.github.com/saltyshiomix/nextron/tar.gz/main';
   const got = require('got');
   const { t, x } = require('tar');
 
@@ -101,7 +96,7 @@ async function downloadAndExtract(branch, example, dirname, spinner) {
           new Promise(resolve => {
             got
               .stream(mainUrl)
-              .pipe(x({ cwd: dirname, strip: 3 }, [`nextron-${hyphenatedBranchName}/examples/_template/gitignore.txt`]))
+              .pipe(x({ cwd: dirname, strip: 3 }, [`nextron-main/examples/_template/gitignore.txt`]))
               .on('finish', () => {
                 fs.renameSync(path.join(dirname, 'gitignore.txt'), path.join(dirname, '.gitignore'));
                 resolve();
@@ -110,7 +105,7 @@ async function downloadAndExtract(branch, example, dirname, spinner) {
           new Promise(resolve => {
             got
               .stream(mainUrl)
-              .pipe(x({ cwd: dirname, strip: 4 }, [`nextron-${hyphenatedBranchName}/examples/_template/${ext}`]))
+              .pipe(x({ cwd: dirname, strip: 4 }, [`nextron-main/examples/_template/${ext}`]))
               .on('finish', () => resolve());
           }),
         ]);
@@ -118,7 +113,7 @@ async function downloadAndExtract(branch, example, dirname, spinner) {
         await new Promise(resolve => {
           got
             .stream(mainUrl)
-            .pipe(x({ cwd: dirname, strip: 3 }, [`nextron-${hyphenatedBranchName}/examples/${example}`]))
+            .pipe(x({ cwd: dirname, strip: 3 }, [`nextron-main/examples/${example}`]))
             .on('finish', () => resolve());
         });
 
